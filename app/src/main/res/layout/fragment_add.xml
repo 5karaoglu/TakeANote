@@ -4,12 +4,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     tools:context=".AddFragment">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:background="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -17,17 +17,18 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:background="@color/teal_700"
             android:gravity="center_vertical"
-            android:orientation="horizontal"
-            android:background="@color/teal_700">
+            android:orientation="horizontal">
 
             <TextView
+
                 android:id="@+id/tvToolbarText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add Text"
-                android:textSize="25sp"
                 android:textColor="@color/white"
+                android:textSize="25sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -51,17 +52,17 @@
         app:layout_constraintGuide_end="31dp" />
 
     <EditText
-        android:padding="5dp"
         android:id="@+id/etHeader"
         android:layout_width="290dp"
         android:layout_height="41dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginBottom="20dp"
         android:ems="10"
-        android:inputType="textMultiLine"
         android:hint="Enter a header"
+        android:inputType="textMultiLine"
+        android:padding="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/etDes"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
-        app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toTopOf="@+id/guideline4" />
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline4"
@@ -78,34 +79,42 @@
         app:layout_constraintGuide_end="83dp" />
 
     <TextView
-        android:padding="5dp"
         android:id="@+id/textView3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:padding="5dp"
         android:text="Header:"
         app:layout_constraintBottom_toTopOf="@+id/etHeader"
         app:layout_constraintStart_toStartOf="@+id/etHeader" />
 
     <EditText
         android:id="@+id/etDes"
-        android:hint="Enter text here"
         android:layout_width="336dp"
         android:layout_height="454dp"
-        android:layout_margin="10dp"
+        android:layout_marginBottom="20dp"
         android:gravity="start|top"
+        android:hint="Enter text here"
         android:inputType="textMultiLine"
         android:padding="10dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
+        app:layout_constraintStart_toStartOf="@+id/guideline2" />
+
+    <Button
+        android:visibility="invisible"
+        android:id="@+id/buttonDelete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="34dp"
+        android:text="DELETE"
+        app:layout_constraintEnd_toStartOf="@+id/buttonCancel"
         app:layout_constraintStart_toStartOf="@+id/guideline2"
-        app:layout_constraintTop_toBottomOf="@+id/etHeader"
-        app:layout_constraintVertical_bias="0.467" />
+        app:layout_constraintTop_toTopOf="@+id/guideline5" />
 
     <Button
         android:id="@+id/buttonSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:text="SAVE"
         app:layout_constraintEnd_toStartOf="@+id/guideline3"
         app:layout_constraintTop_toTopOf="@+id/guideline5" />
@@ -114,8 +123,7 @@
         android:id="@+id/buttonCancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginEnd="34dp"
         android:text="CANCEL"
         app:layout_constraintEnd_toStartOf="@+id/buttonSave"
         app:layout_constraintTop_toTopOf="@+id/guideline5" />

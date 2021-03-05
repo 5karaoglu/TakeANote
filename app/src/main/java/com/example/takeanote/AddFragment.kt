@@ -1,6 +1,8 @@
 package com.example.takeanote
 
+import android.app.AlertDialog
 import android.app.Application
+import android.content.DialogInterface
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -35,6 +37,11 @@ class AddFragment : Fragment() {
         val etDes = requireActivity().findViewById<EditText>(R.id.etDes)
         val buttonSave = requireActivity().findViewById<Button>(R.id.buttonSave)
         val buttonCancel = requireActivity().findViewById<Button>(R.id.buttonCancel)
+        val buttonDelete = requireActivity().findViewById<Button>(R.id.buttonDelete)
+
+        arguments?.let {
+            buttonDelete.visibility = View.VISIBLE
+        }
 
         buttonSave.setOnClickListener {
             if (!etHeader.text.isNullOrEmpty()){
@@ -53,6 +60,19 @@ class AddFragment : Fragment() {
         }
         buttonCancel.setOnClickListener {
             findNavController().popBackStack()
+        }
+        buttonDelete.setOnClickListener {
+             arguments?.let {
+                 AlertDialog.Builder(requireContext())
+                         .setCancelable(false)
+                         .setNegativeButton("Cancel") { dialog, _ -> dialog.cancel() }
+                         .setPositiveButton("DELETE") { _, _ ->
+                             viewModel.delete(Note(it.getInt("id"), it.getString("header")!!,it.getString("text")!!))
+                             findNavController().navigate(R.id.action_addFragment_to_mainFragment)
+                         }
+                         .setMessage("Are you sure you want to delete this note ?")
+                         .show()
+             }
         }
 
         arguments?.let {
